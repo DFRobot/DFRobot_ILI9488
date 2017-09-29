@@ -113,6 +113,8 @@ void invertDisplay(boolean i);
 /*
  * @brief convert 888 color data to 16bit color data
  *
+ * @return 16bit color data
+ *
  * @param r, g, b 888 color data
  */
 uint16_t color565(uint8_t r, uint8_t g, uint8_t b);
