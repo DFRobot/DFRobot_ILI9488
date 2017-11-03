@@ -1,0 +1,120 @@
+#include "DFRobot_ILI9488_SPI.h"
+#include "DFRobot_SD_SPI.h"
+
+//#define _USE_SD
+
+#ifdef __AVR__
+uint8_t pin_cs = 2, pin_cd = 7, pin_rst = 3, pin_SD_cs = 3;
+#else
+uint8_t pin_cs = 0, pin_cd = D7, pin_rst = D4, pin_SD_cs = D3;
+#endif
+
+DFRobot_ILI9488_SPI tft(pin_cs, pin_cd, pin_rst);
+
+#ifdef _USE_SD
+Sd2Card card;
+SdVolume volume;
+SdFile root;
+File myFile;
+#endif
+
+
+void setup(void)
+{
+  delay(500);
+  Serial.begin(115200);
+  _DEBUG_PRINT("\n  ILI9488 DISPLAY TEST !");
+  tft.begin();
+  tft.supportZK();
+
+#ifdef _USE_SD
+  if(!SD.begin(pin_SD_cs)) {
+    Serial.print("\n  SD begin faild");
+    while(1);
+  } else {
+    Serial.print("\n  SD begin successful");
+  }
+  setSDFileSystem(&myFile, &card, &volume, &root);
+  tft.supportSD();
+#endif
+}
+
+
+#define drawAxis()        tft.fillScreen(0); \
+                          tft.drawVLine(0, -240, 480, DISPLAY_WHITE); \
+                          tft.drawHLine(-160, 0, 320, DISPLAY_WHITE)
+
+void loop(void)
+{
+  tft.setOrign(160, 240);
+  tft.fillScreen(DISPLAY_RED); delay(500);
+  drawAxis();
+  tft.setTextColor(DISPLAY_YELLOW);
+  tft.setTextSize(4);
+  tft.setCursor(0, 0);
+#if((defined __ets__) || (defined ESP_PLATFORM))
+  tft.printf("fire\nBeetle oh\tye");
+  tft.setCursor(0, 240);
+  tft.printf("1 + 1 = %d  ", 2);
+#else
+  tft.print("fire\nBeetle oh\tye");
+  tft.setCursor(0, 240);
+  tft.println("1 + 1 = 2");
+  tft.println("2 + 2 = 4");
+#endif
+  delay(500);
+  drawAxis();
+  tft.drawRoundRect(20, 20, 80, 80, 20, DISPLAY_ORANGE);
+  tft.drawRoundRect(-20, 20, -80, 80, 20, DISPLAY_ORANGE);
+  tft.drawRoundRect(-20, -20, -80, -80, 20, DISPLAY_ORANGE);
+  tft.drawRoundRect(20, -20, 80, -80, 20, DISPLAY_ORANGE);
+  delay(500);
+  tft.fillRoundRect(20, 20, 80, 80, 20, DISPLAY_ORANGE);
+  tft.fillRoundRect(-20, 20, -80, 80, 20, DISPLAY_ORANGE);
+  tft.fillRoundRect(-20, -20, -80, -80, 20, DISPLAY_ORANGE);
+  tft.fillRoundRect(20, -20, 80, -80, 20, DISPLAY_ORANGE);
+  delay(500);
+  drawAxis();
+  tft.drawLine(-40, -40, 40, 40, DISPLAY_RED);
+  tft.drawLine(40, -40, -40, 40, DISPLAY_RED);
+  tft.drawLine(-200, -20, 200, -20, DISPLAY_RED);
+  tft.drawLine(-200, 20, 200, 20, DISPLAY_RED);
+  tft.drawLine(20, -400, 20, 400, DISPLAY_RED);
+  tft.drawLine(-20, -400, -20, 400, DISPLAY_RED);
+  delay(500);
+  drawAxis();
+  tft.drawRect(20, 20, 80, 80, DISPLAY_BLUE);
+  tft.drawRect(-20, 20, -80, 80, DISPLAY_BLUE);
+  tft.drawRect(-20, -20, -80, -80, DISPLAY_BLUE);
+  tft.drawRect(20, -20, 80, -80, DISPLAY_BLUE);
+  delay(500);
+  tft.fillRect(20, 20, 80, 80, DISPLAY_BLUE);
+  tft.fillRect(-20, 20, -80, 80, DISPLAY_BLUE);
+  tft.fillRect(-20, -20, -80, -80, DISPLAY_BLUE);
+  tft.fillRect(20, -20, 80, -80, DISPLAY_BLUE);
+  delay(500);
+  drawAxis();
+  tft.drawCircle(60, 60, 40, DISPLAY_CYAN);
+  tft.drawCircle(-60, 60, 40, DISPLAY_CYAN);
+  tft.drawCircle(-60, -60, 40, DISPLAY_CYAN);
+  tft.drawCircle(60, -60, 40, DISPLAY_CYAN);
+  delay(500);
+  tft.fillCircle(60, 60, 40, DISPLAY_CYAN);
+  tft.fillCircle(-60, 60, 40, DISPLAY_CYAN);
+  tft.fillCircle(-60, -60, 40, DISPLAY_CYAN);
+  tft.fillCircle(60, -60, 40, DISPLAY_CYAN);
+  delay(500);
+  drawAxis();
+  tft.drawTriangle(0, -120, -80, 120, 80, 120, DISPLAY_GREEN);
+  delay(500);
+  tft.fillTriangle(0, -120, -80, 120, 80, 120, DISPLAY_GREEN);
+  delay(500);
+#ifdef _USE_SD
+  tft.backToOrigin();
+  tft.fillScreen(0);
+  tft.drawBmp(80, 160, "Image.bmp");
+  delay(1000);
+#endif
+}
+
+
