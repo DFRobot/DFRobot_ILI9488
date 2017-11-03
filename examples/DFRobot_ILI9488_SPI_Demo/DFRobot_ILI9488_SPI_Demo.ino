@@ -1,21 +1,19 @@
 #include "DFRobot_ILI9488_SPI.h"
 #include "DFRobot_SD_SPI.h"
 
-//#define _USE_SD
+#define _USE_SD
 
 #ifdef __AVR__
 uint8_t pin_cs = 2, pin_cd = 7, pin_rst = 3, pin_SD_cs = 3;
 #else
-uint8_t pin_cs = 0, pin_cd = D7, pin_rst = D4, pin_SD_cs = D3;
+uint8_t pin_cs = D2, pin_cd = D7, pin_rst = D4, pin_SD_cs = D3;
 #endif
 
 DFRobot_ILI9488_SPI tft(pin_cs, pin_cd, pin_rst);
 
+
 #ifdef _USE_SD
-Sd2Card card;
-SdVolume volume;
-SdFile root;
-File myFile;
+DFRobot_SD_SPI      sd(pin_SD_cs);
 #endif
 
 
@@ -28,13 +26,11 @@ void setup(void)
   tft.supportZK();
 
 #ifdef _USE_SD
-  if(!SD.begin(pin_SD_cs)) {
+  while(!sd.begin()) {
     Serial.print("\n  SD begin faild");
-    while(1);
-  } else {
-    Serial.print("\n  SD begin successful");
+    delay(2000);
   }
-  setSDFileSystem(&myFile, &card, &volume, &root);
+  Serial.print("\n  SD begin successful");
   tft.supportSD();
 #endif
 }
@@ -46,8 +42,14 @@ void setup(void)
 
 void loop(void)
 {
-  tft.setOrign(160, 240);
   tft.fillScreen(DISPLAY_RED); delay(500);
+#ifdef _USE_SD
+  tft.backToOrigin();
+  tft.fillScreen(0);
+  tft.drawBmp(80, 160, "Image.bmp");
+  delay(1000);
+#endif
+  tft.setOrign(160, 240);
   drawAxis();
   tft.setTextColor(DISPLAY_YELLOW);
   tft.setTextSize(4);
@@ -109,12 +111,6 @@ void loop(void)
   delay(500);
   tft.fillTriangle(0, -120, -80, 120, 80, 120, DISPLAY_GREEN);
   delay(500);
-#ifdef _USE_SD
-  tft.backToOrigin();
-  tft.fillScreen(0);
-  tft.drawBmp(80, 160, "Image.bmp");
-  delay(1000);
-#endif
 }
 
 
