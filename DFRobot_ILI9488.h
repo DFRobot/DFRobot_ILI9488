@@ -79,10 +79,14 @@ class DFRobot_ILI9488 : public DFRobot_Display
 
     int16_t     setRotation(eROTATION eRotation);
     void        writeToRam(void);
-    void        invertDisplay(eINVERT invert);
     void        fillScreen(uint16_t color);
     void        drawVLine(int16_t x, int16_t y, int16_t height, uint16_t color);
   	void        drawHLine(int16_t x, int16_t y, int16_t width, uint16_t color);
+    
+    void        displayON(void);
+    void        displayOFF(void);
+    void        displaySleepIN(void);
+    void        displaySleepOUT(void);
 
   protected:
     void        setCursorAddr(int16_t x0, int16_t y0, int16_t x1, int16_t y1);
