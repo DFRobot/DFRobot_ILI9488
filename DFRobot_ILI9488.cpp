@@ -14,25 +14,25 @@ DFRobot_ILI9488::DFRobot_ILI9488(void) : DFRobot_Display(ILI9488_TFTWIDTH, ILI94
 
 void DFRobot_ILI9488::displayON(void)
 {
-  writeCmd(DISPON);
+  writeCmd(ILI9488_DISPON);
 }
 
 
 void DFRobot_ILI9488::displayOFF(void)
 {
-  writeCmd(DISPOFF);
+  writeCmd(ILI9488_DISPOFF);
 }
 
 
 void DFRobot_ILI9488::displaySleepIN(void)
 {
-  writeCmd(SLPIN);
+  writeCmd(ILI9488_SLPIN);
 }
 
 
 void DFRobot_ILI9488::displaySleepOUT(void)
 {
-  writeCmd(SLPOUT);
+  writeCmd(ILI9488_SLPOUT);
 }
 
 
