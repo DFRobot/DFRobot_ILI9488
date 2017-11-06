@@ -12,13 +12,27 @@
 DFRobot_ILI9488::DFRobot_ILI9488(void) : DFRobot_Display(ILI9488_TFTWIDTH, ILI9488_TFTHEIGHT) {}
 
 
-void DFRobot_ILI9488::invertDisplay(eINVERT invert)
+void DFRobot_ILI9488::displayON(void)
 {
-  if(invert == eINVERT_OFF) {
-    writeCmd(ILI9488_INVOFF);
-  } else {
-    writeCmd(ILI9488_INVON);
-  }
+  writeCmd(DISPON);
+}
+
+
+void DFRobot_ILI9488::displayOFF(void)
+{
+  writeCmd(DISPOFF);
+}
+
+
+void DFRobot_ILI9488::displaySleepIN(void)
+{
+  writeCmd(SLPIN);
+}
+
+
+void DFRobot_ILI9488::displaySleepOUT(void)
+{
+  writeCmd(SLPOUT);
 }
 
 
