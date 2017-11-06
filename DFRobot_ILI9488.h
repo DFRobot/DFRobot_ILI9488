@@ -81,7 +81,7 @@ class DFRobot_ILI9488 : public DFRobot_Display
     void        writeToRam(void);
     void        fillScreen(uint16_t color);
     void        drawVLine(int16_t x, int16_t y, int16_t height, uint16_t color);
-  	void        drawHLine(int16_t x, int16_t y, int16_t width, uint16_t color);
+    void        drawHLine(int16_t x, int16_t y, int16_t width, uint16_t color);
     
     void        displayON(void);
     void        displayOFF(void);
