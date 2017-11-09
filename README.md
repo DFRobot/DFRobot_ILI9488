@@ -20,10 +20,11 @@ Provide a library faciltates operations in the LCD(Liquid Crysatal DISPLAY) that
 * [Summary](#summary)
 * [Feature](#feature)
 * [Installation](#installation)
-* [Result table](#result table)
+* [Result](#result)
 * [Methods](#methods)
 
 * [History](#history)
+* [Depends](#depends)
 * [Compatibility](#compatibility)
 * [Credits](#credits)
 <snippet>
@@ -45,13 +46,13 @@ Download the library ZIP file and unzip it to the Arduino folder of the library.
 (If you haven't download DFRobot display library before,you need to download it first to drive (https://github.com/DFRobot/DFRobot_Display))
 SPI_SD interface is available when compatible SD card libraries of ESP32 and ESP8266(https://github.com/DFRobot/SD_SPI)
 
-## Result table
+## Result
 
 Functions supports. <0 means error;>0 means warning, 0 means OK .
 
 begin type
 
-Value              |             Result            
+value              |             result            
 ------------------ | -------------------------------------------
 -1                 |             error             
 1                  |      no feedback test         
@@ -410,6 +411,13 @@ void displaySleepIN(void);
 void displaySleepOUT(void);
 
 ```
+
+## Depends
+
+MCU                |                     URL                       | Remarks
+------------------ | :-------------------------------------------: | -----------
+DFRobot_Display    |  https://github.com/DFRobot/DFRobot_Display   | must
+SPI_SD             |  https://github.com/DFRobot/SD_SPI            | optional
 
 ## Compatibility
 
