@@ -20,7 +20,7 @@ Provide a library faciltates operations in the LCD(Liquid Crysatal DISPLAY) that
 * [Summary](#summary)
 * [Feature](#feature)
 * [Installation](#installation)
-* [Result table](#result table)
+* [Result](#result)
 * [Methods](#methods)
 
 * [History](#history)
