@@ -1,4 +1,5 @@
 # Display
+
 This is a base class library of the device display to store drawing methods of basic figures;many display device of DFRobot depend on it.   
 
 ## DFRobot_Display Library for Arduino
@@ -26,7 +27,7 @@ Enable figures-drawing in the screen and many configurable functions are availab
 ## Feature
 
 --Support different drawings in the screen, including point, line, circle, fill circle, 
---rectangle, fill rectangle, triangle, fill triangle, rounded rectangle, fill rounded rectangle. 
+  rectangle, fill rectangle, triangle, fill triangle, rounded rectangle, fill rounded rectangle. 
 --English fonts or character library chips are configurable.
 --Read and display BMP file in SD card.
 --The library can be drived by basic hardware programs of drawPixel, fillScreen and begin.
@@ -43,6 +44,7 @@ Functions supports. <0 means error;>0 means warning, 0 means OK .
 function type
 
     Value       |             Result            
+----------------|-------------------------------
     -4          |         mem overflow          
     -3          |          not support          
     -2          |             param             
