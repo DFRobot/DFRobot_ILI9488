@@ -1,19 +1,9 @@
-# ILI9488
-The ILI9488 is a 16.7M single-chip SoC driver for a-Si TFT liquid crystal display panels with a resolution of
-320(RGB) x 480 dots. The ILI9488 is comprised of a 960-channel source driver, a 480-channel gate driver,
-345,600 bytes GRAM for graphic data of 320 (RGB) x 480 dots, and power supply circuit.
-The ILI9488 supports parallel DBI Type B 8-/9-/16-/18-/24-bit data bus interfaces and DBI Type C 3-/4-line serial
-peripheral interfaces (SPI) to input commands. The ILI9488 supports DPI (16-/18-/24-bit) data bus for video image
-display. For MIPI*-DSI* high-speed interface mode, the ILI9488 also provides one data lane and one clock lane
-that can support up to 500Mbps on MIPI-DSI link.
-The ILI9488 can operate with 1.65V I/O interface voltage and supports a wide range of analog power supplies. The
-ILI9488 supports 8-colors display and sleep mode power management functions, ideal for portable products where
-battery power conservation is desirable, such as digital cellular phones, smart phones, MP3 players, personal
-media players and similar devices with color graphics displays.
+# Display
+This is a base class library of the device display to store drawing methods of basic figures;many display device of DFRobot depend on it.   
 
-## DFRobot_ILI9488 Library for Arduino
+## DFRobot_Display Library for Arduino
 ---------------------------------------------------------
-Provide a library faciltates operations in the LCD(Liquid Crysatal DISPLAY) that drived by ILI9488.
+Provide a library faciltates drawing in majority screens.
 
 ## Table of Contents
 
@@ -31,35 +21,33 @@ Provide a library faciltates operations in the LCD(Liquid Crysatal DISPLAY) that
 
 ## Summary
 
-Input commands and draw different figures in the LCD.
+Enable figures-drawing in the screen and many configurable functions are available.
 
 ## Feature
 
-Support different drawings in the screen, including point, line, circle, rectangle, triangle,rounded rectangle and some commands 
-Support English characters.
-SPI: the redraw rate can reach to 10 frames per second when redrawed by ESP series controllers 
+--Support different drawings in the screen, including point, line, circle, fill circle, 
+--rectangle, fill rectangle, triangle, fill triangle, rounded rectangle, fill rounded rectangle. 
+--English fonts or character library chips are configurable.
+--Read and display BMP file in SD card.
+--The library can be drived by basic hardware programs of drawPixel, fillScreen and begin.
 
 ## Installation
 
 Download the library ZIP file and unzip it to the Arduino folder of the library.
-(If you haven't download DFRobot display library before,you need to download it first to drive (https://github.com/DFRobot/DFRobot_Display))
-SPI_SD interface is available when compatible SD card libraries of ESP32 and ESP8266(https://github.com/DFRobot/SD_SPI)
+SPI_SD interface is available, compatible SD card libraries of ESP32 and ESP8266(https://github.com/DFRobot/SD_SPI) are added.
 
 ## Result
 
 Functions supports. <0 means error;>0 means warning, 0 means OK .
 
-begin type
-    value       |             result            |
-    -1          |             error             |
-    1           |      no feedback test         |
- 
 function type
-    value       |             result            |
-    -3          |          not support          |
-    -2          |             param             |
-    -1          |             error             |
-    1           |           out range           |
+
+    Value       |             Result            
+    -4          |         mem overflow          
+    -3          |          not support          
+    -2          |             param             
+    -1          |             error             
+    1           |           out range           
 
 ## Methods
 
@@ -67,7 +55,8 @@ function type
 
 #include "DFRobot_ILI9488_SPI.h"
 
-Except special instructions, all axis as below are relative to the source node , color represents 16 bits 565 color data 
+Except special instructions, all axis as below are relative to the source node , 
+color represents 16 bits 565 color data 
 
 //color define 
 #define DISPLAY_BLACK       0x0000      /*   0,   0,   0 */
@@ -89,24 +78,6 @@ Except special instructions, all axis as below are relative to the source node ,
 #define DISPLAY_ORANGE      0xFD20      /* 255, 165,   0 */
 #define DISPLAY_GREENYELLOW 0xAFE5      /* 173, 255,  47 */
 #define DISPLAY_PINK        0xF81F
-
-/*
- * @brief ILI9488 objective
- *
- * @param ILI9488 control Pin
- *    pin_cs        ILI9488 cs pin
- *    pin_cd        ILI9488 cd/rs pin
- *    pin_rst       hardware power-on reset: yes : Set to cd/rs is recommended
- *                                           no  : ILI9488 rst pin
- */
-DFRobot_ILI9488_SPI(uint8_t pin_cs, uint8_t pin_cd, uint8_t pin_rst);
-
-/*
- * @brief lib begin
- *
- * @return begin result
- */
-int16_t begin(void);
 
 /*
  * @brief fill screen
@@ -367,54 +338,21 @@ int16_t getWidth(void);
 int16_t getHeight(void);
 
 /*
- * @brief Display bmp file
- *
- * @param s       file objectiv
- *        x       The x-axis of the starting point
- *        y       The y-axis of the starting point
- *
- * @return Error message
+ * @brief support chinese font IC
  */
-int16_t drawBmp(Stream *s, int16_t x, int16_t y);
-
-/*
- * @brief invertDisplay
- *
- * @param eInvert       
- */
-int16_t getWidth(void);
-
-/*
- * @brief display ON
- */
-void displayON(void);
-
-/*
- * @brief display OFF
- */
-void displayOFF(void);
-
-/*
- * @brief display sleep IN
- */
-void displaySleepIN(void);
-
-/*
- * @brief display sleep OUT
- */
-void displaySleepOUT(void);
+void supportChineseFont(void);
 
 ```
 
 ## Compatibility
 
-MCU                | Work Well | Work Wrong | Untested  | Remarks
+MCU                | Work Well    | Work Wrong   | Untested    | Remarks
 ------------------ | :----------: | :----------: | :---------: | -----
-FireBeetle-ESP32  |      √       |             |            | 
-FireBeetle-ESP8266  |      √       |             |            | 
-FireBeetle-BLE4.1 |       √      |             |            | 
-Arduino uno |       √      |             |            | 
-Arduino leonardo |      √       |             |            | 
+FireBeetle-ESP32   |      √       |              |             | 
+FireBeetle-ESP8266 |      √       |              |             | 
+FireBeetle-BLE4.1  |      √       |              |             | 
+Arduino uno        |      √       |              |             | 
+Arduino leonardo   |      √       |              |             | 
 
 ## History
 
