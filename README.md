@@ -51,7 +51,7 @@ Functions supports. <0 means error;>0 means warning, 0 means OK .
 
 begin type
 
-value              |             result            
+Value              |             Result            
 ------------------ | -------------------------------------------
 -1                 |             error             
 1                  |      no feedback test         
