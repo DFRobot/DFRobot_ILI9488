@@ -42,8 +42,8 @@ SPI: the redraw rate can reach to 10 frames per second when redrawed by ESP seri
 
 ## Installation
 
-Download the library ZIP file and unzip it to the Arduino folder of the library.
-(If you haven't download DFRobot display library before,you need to download it first to drive (https://github.com/DFRobot/DFRobot_Display))
+Download the library ZIP file and unzip it to the Arduino folder of the library.<br>
+(If you haven't download DFRobot display library before,you need to download it first to drive (https://github.com/DFRobot/DFRobot_Display))<br>
 SPI_SD interface is available when compatible SD card libraries of ESP32 and ESP8266(https://github.com/DFRobot/SD_SPI)
 
 ## Result
