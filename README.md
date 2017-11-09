@@ -45,7 +45,7 @@ Download the library ZIP file and unzip it to the Arduino folder of the library.
 (If you haven't download DFRobot display library before,you need to download it first to drive (https://github.com/DFRobot/DFRobot_Display))
 SPI_SD interface is available when compatible SD card libraries of ESP32 and ESP8266(https://github.com/DFRobot/SD_SPI)
 
-## Result table
+## Result
 
 Functions supports. <0 means error;>0 means warning, 0 means OK .
 
