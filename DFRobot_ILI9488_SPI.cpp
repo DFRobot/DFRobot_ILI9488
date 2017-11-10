@@ -1,27 +1,19 @@
 #include "DFRobot_ILI9488_SPI.h"
 
 
-DFRobot_ILI9488_SPI::DFRobot_ILI9488_SPI(uint8_t pin_cs_, uint8_t pin_cd_, uint8_t pin_rst_)
+DFRobot_ILI9488_SPI::DFRobot_ILI9488_SPI(uint8_t pin_cs_, uint8_t pin_cd_)
 {
   pin_cs    = pin_cs_;
   pin_cd    = pin_cd_;
-  pin_rst   = pin_rst_;
   pinMode(pin_cd, OUTPUT);
   pinMode(pin_cs, OUTPUT);
-  pinMode(pin_rst, OUTPUT);
   digitalWrite(pin_cd, 1);
   digitalWrite(pin_cs, 1);
-  digitalWrite(pin_rst, 1);
 }
 
 
 int16_t DFRobot_ILI9488_SPI::begin(void)
 {
-  digitalWrite(pin_rst, 0);
-  delay(20);
-  digitalWrite(pin_rst, 1);
-  delay(150);
-
   writeCmd(0xE0);
   writeDat(0x00);
   writeDat(0x03);

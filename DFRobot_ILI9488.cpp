@@ -94,7 +94,13 @@ int16_t DFRobot_ILI9488::setRotation(eROTATION eRotation)
 
 void DFRobot_ILI9488::drawVLine(int16_t x, int16_t y, int16_t height, uint16_t color)
 {
+  _DEBUG_PRINT("\n  drawVLine at : ");
   if(limitVLine(x, y, height) < 0) {return;}
+  _DEBUG_PRINTVAR(x, DEC);
+  _DEBUG_PRINT(" ");
+  _DEBUG_PRINTVAR(y, DEC);
+  _DEBUG_PRINT(" ");
+  _DEBUG_PRINTVAR(height, DEC);
   setCursorAddr(x, y, x, y + height - 1);
   writeToRam();
   writeRepeatPixel(color, height, 1);
