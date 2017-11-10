@@ -414,7 +414,7 @@ void displaySleepOUT(void);
 
 ## Depends
 
-Project            |                     URL                       | Remarks
+Projects           |                     URL                       | Remarks
 ------------------ | :-------------------------------------------: | -----------
 DFRobot_Display    |  https://github.com/DFRobot/DFRobot_Display   | must
 SPI_SD             |  https://github.com/DFRobot/SD_SPI            | optional
