@@ -36,9 +36,9 @@ Input commands and draw different figures in the LCD.
 
 ## Feature
 
-Support different drawings in the screen, including point, line, circle, rectangle, triangle,rounded rectangle and some commands 
-Support English characters.
-SPI: the redraw rate can reach to 10 frames per second when redrawed by ESP series controllers 
+Support different drawings in the screen, including point, line, circle, rectangle, triangle,rounded rectangle and some commands.<br>
+Support English characters.<br>
+SPI: the redraw rate can reach to 10 frames per second when redrawed by ESP series controllers.<br>
 
 ## Installation
 
