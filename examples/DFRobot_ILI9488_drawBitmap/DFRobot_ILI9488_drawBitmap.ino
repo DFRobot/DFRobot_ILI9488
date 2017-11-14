@@ -1,3 +1,19 @@
+/*
+ * file : DFRobot_ILI9488_drawBasicGraphics.ino
+ *
+ * To accomplish the test, you need a fireBeetle Covers-3.5 TFT LCD module to plug fireBeetle esp8266, esp32 or Bluno2. 
+ * Then complile and download the example.
+ *
+ * Once operates right, ways in the loop can display bmp iamges in the SD card(bmp format:24 bit bitmap )
+ *
+ * Copyright   [DFRobot](http://www.dfrobot.com), 2016
+ * Copyright   GNU Lesser General Public License
+ *
+ * version  V1.0
+ * date  2017-11-13
+ */
+
+
 #include "DFRobot_ILI9488_SPI.h"
 
 #if((defined __ets__) || (defined ESP_PLATFORM))
