@@ -102,10 +102,10 @@ Except special instructions, all axis as below are relative to the source node ,
  * @param ILI9488 control Pin
  *    pin_cs        ILI9488 cs pin
  *    pin_cd        ILI9488 cd/rs pin
- *    pin_rst       hardware power-on reset: yes : Set to cd/rs is recommended
- *                                           no  : ILI9488 rst pin
+ *
+ * @remark if there is not have a power-on reset circuit.please hand-reset
  */
-DFRobot_ILI9488_SPI(uint8_t pin_cs, uint8_t pin_cd, uint8_t pin_rst);
+DFRobot_ILI9488_SPI(uint8_t pin_cs, uint8_t pin_cd);
 
 /*
  * @brief lib begin
