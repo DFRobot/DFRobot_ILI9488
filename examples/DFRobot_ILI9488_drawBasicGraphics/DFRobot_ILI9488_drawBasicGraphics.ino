@@ -1,21 +1,6 @@
-/*
- * file : DFRobot_ILI9488_drawBasicGraphics.ino
- *
- * To accomplish the test, you need a fireBeetle Covers-3.5 TFT LCD module to plug fireBeetle esp8266, esp32 or Bluno2. 
- * Then complile and download the example.
- *
- * Once operates right, the module shows different kinds of figures and printed texts.
- *
- * Copyright   [DFRobot](http://www.dfrobot.com), 2016
- * Copyright   GNU Lesser General Public License
- *
- * version  V1.0
- * date  2017-11-13
- */
-
- 
 #include "DFRobot_ILI9488_SPI.h"
 
+//set control pins
 #if((defined __ets__) || (defined ESP_PLATFORM))
 uint8_t pin_cs = 0, pin_cd = D4, pin_SD_cs = D3;
 #else
@@ -29,12 +14,13 @@ void setup(void)
 {
   delay(500);
   Serial.begin(115200);
-  _DEBUG_PRINT("\n  ILI9488 DISPLAY TEST !");
-  tft.begin();
+  Serial.print("\n  ILI9488 DISPLAY TEST !");
+  tft.begin();  //begin
   //tft.supportChineseFont();
 }
 
 
+//draw axis
 #define drawAxis()        tft.fillScreen(0); \
                           tft.drawVLine(0, -240, 480, DISPLAY_WHITE); \
                           tft.drawHLine(-160, 0, 320, DISPLAY_WHITE)
@@ -42,12 +28,16 @@ void setup(void)
 void loop(void)
 {
   tft.fillScreen(DISPLAY_RED); delay(500);
-
+  
+  //set orign
   tft.setOrign(160, 240);
   drawAxis();
+  //config text
   tft.setTextColor(DISPLAY_YELLOW);
   tft.setTextSize(4);
+  //set text cursor
   tft.setCursor(0, 0);
+  //print
 #if((defined __ets__) || (defined ESP_PLATFORM))
   tft.printf("fire\nBeetle oh\tye");
   tft.setCursor(0, 240);
@@ -60,17 +50,20 @@ void loop(void)
 #endif
   delay(500);
   drawAxis();
+  //draw round rectangle
   tft.drawRoundRect(20, 20, 80, 80, 20, DISPLAY_ORANGE);
   tft.drawRoundRect(-20, 20, -80, 80, 20, DISPLAY_ORANGE);
   tft.drawRoundRect(-20, -20, -80, -80, 20, DISPLAY_ORANGE);
   tft.drawRoundRect(20, -20, 80, -80, 20, DISPLAY_ORANGE);
   delay(500);
+  //fill round rectangle
   tft.fillRoundRect(20, 20, 80, 80, 20, DISPLAY_ORANGE);
   tft.fillRoundRect(-20, 20, -80, 80, 20, DISPLAY_ORANGE);
   tft.fillRoundRect(-20, -20, -80, -80, 20, DISPLAY_ORANGE);
   tft.fillRoundRect(20, -20, 80, -80, 20, DISPLAY_ORANGE);
   delay(500);
   drawAxis();
+  //draw lines
   tft.drawLine(-40, -40, 40, 40, DISPLAY_RED);
   tft.drawLine(40, -40, -40, 40, DISPLAY_RED);
   tft.drawLine(-200, -20, 200, -20, DISPLAY_RED);
@@ -79,30 +72,36 @@ void loop(void)
   tft.drawLine(-20, -400, -20, 400, DISPLAY_RED);
   delay(500);
   drawAxis();
+  //draw rectangle
   tft.drawRect(20, 20, 80, 80, DISPLAY_BLUE);
   tft.drawRect(-20, 20, -80, 80, DISPLAY_BLUE);
   tft.drawRect(-20, -20, -80, -80, DISPLAY_BLUE);
   tft.drawRect(20, -20, 80, -80, DISPLAY_BLUE);
   delay(500);
+  //fill rectangle
   tft.fillRect(20, 20, 80, 80, DISPLAY_BLUE);
   tft.fillRect(-20, 20, -80, 80, DISPLAY_BLUE);
   tft.fillRect(-20, -20, -80, -80, DISPLAY_BLUE);
   tft.fillRect(20, -20, 80, -80, DISPLAY_BLUE);
   delay(500);
   drawAxis();
+  //draw circle
   tft.drawCircle(60, 60, 40, DISPLAY_CYAN);
   tft.drawCircle(-60, 60, 40, DISPLAY_CYAN);
   tft.drawCircle(-60, -60, 40, DISPLAY_CYAN);
   tft.drawCircle(60, -60, 40, DISPLAY_CYAN);
   delay(500);
+  //fill circle
   tft.fillCircle(60, 60, 40, DISPLAY_CYAN);
   tft.fillCircle(-60, 60, 40, DISPLAY_CYAN);
   tft.fillCircle(-60, -60, 40, DISPLAY_CYAN);
   tft.fillCircle(60, -60, 40, DISPLAY_CYAN);
   delay(500);
   drawAxis();
+  //draw triangle
   tft.drawTriangle(0, -120, -80, 120, 80, 120, DISPLAY_GREEN);
   delay(500);
+  //fill triangle
   tft.fillTriangle(0, -120, -80, 120, 80, 120, DISPLAY_GREEN);
   delay(500);
 }
