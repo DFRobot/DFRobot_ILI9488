@@ -6,7 +6,7 @@ You can draw different graphs in the module. Additionally, there is a SD card wi
 The module can shine your works in many fields. You can put the module to small works, embed it into industrial products as a display.
 
 For your reference, demos are available to display the module.
-These demos are available in Arduino uno, Arduino leonardo, fireBeetle bluno 2, fireBeetle esp8266, fireBeetle esp32.
+These demos are available in Arduino uno, Arduino leonardo, FireBeetle-328P, FireBeetle-ESP8266, FireBeetle-ESP32.
 The screen only need 3 IO interfaces to drive, you can do more with unoccupied pins.
 Good frame rate is available in the ESP series of controllers.
 
