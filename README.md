@@ -9,6 +9,7 @@ For your reference, demos are available to display the module.
 These demos are available in Arduino uno, Arduino leonardo, FireBeetle-328P, FireBeetle-ESP8266, FireBeetle-ESP32.
 The screen only need 3 IO interfaces to drive, you can do more with unoccupied pins.
 Good frame rate is available in the ESP series of controllers.
+(attention :On arduino uno/leonardo must connect with dupont line)
 
 ![back face](https://raw.githubusercontent.com/DFRobot/binaryfiles/master/DFR0480/DFR0480svg1.png)
 
@@ -427,8 +428,8 @@ MCU                | Work Well | Work Wrong | Untested  | Remarks
 FireBeetle-ESP32  |      √       |             |            | 
 FireBeetle-ESP8266  |      √       |             |            | 
 FireBeetle-BLE4.1 |       √      |             |            | 
-Arduino uno |       √      |             |            | 
-Arduino leonardo |      √       |             |            | 
+Arduino uno |       √      |             |            | with dupont line
+Arduino leonardo |      √       |             |            | with dupont line
 
 ## History
 
